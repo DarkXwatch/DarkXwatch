@@ -42,3 +42,51 @@ hideButton.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
 hideButton.Text = "X"
 hideButton.TextColor3 = Color3.fromRGB(255, 255, 255)
 hideButton.Parent = frame
+
+-- Alien X Button
+alienButton.Size = UDim2.new(0.5, 0, 0.2, 0)
+alienButton.Position = UDim2.new(0.25, 0, 0.4, 0)
+alienButton.BackgroundColor3 = Color3.fromRGB(0, 0, 139)
+alienButton.Text = "Alien X"
+alienButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+alienButton.Parent = frame
+
+-- Mini Icon
+miniFrame.Size = UDim2.new(0, 30, 0, 30)
+miniFrame.Position = UDim2.new(0.9, 0, 0.9, 0)
+miniFrame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+miniFrame.Text = "A"
+miniFrame.TextSize = 20
+miniFrame.TextColor3 = Color3.fromRGB(255, 255, 255)
+miniFrame.Visible = false
+miniFrame.Parent = gui
+
+-- Adding White Dots to Mini Icon
+for i = 1, 20 do
+    local dot = Instance.new("Frame")
+    dot.Size = UDim2.new(0, 2, 0, 2)
+    dot.Position = UDim2.new(math.random(), 0, math.random(), 0)
+    dot.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    dot.BorderSizePixel = 0
+    dot.Parent = miniFrame
+end
+
+-- Hide GUI Function
+hideButton.MouseButton1Click:Connect(function()
+    frame.Visible = false
+    miniFrame.Visible = true
+end)
+
+-- Show GUI Function
+miniFrame.MouseButton1Click:Connect(function()
+    frame.Visible = true
+    miniFrame.Visible = false
+end)
+
+-- Execute Alien X Function
+alienButton.MouseButton1Click:Connect(function()
+    local args = {
+        [1] = game:GetService("ReplicatedStorage"):WaitForChild("Aliens"):WaitForChild("AF"):WaitForChild("Alienx")
+    }
+    game:GetService("ReplicatedStorage"):WaitForChild("CharChange"):FireServer(unpack(args))
+end)
