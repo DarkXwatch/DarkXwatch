@@ -1,0 +1,44 @@
+local player = game.Players.LocalPlayer
+local gui = Instance.new("ScreenGui")
+local frame = Instance.new("Frame")
+local hideButton = Instance.new("TextButton")
+local alienButton = Instance.new("TextButton")
+local titleBar = Instance.new("TextLabel")
+local miniFrame = Instance.new("TextButton")
+
+-- GUI Properties
+gui.Name = "AlienXGui"
+gui.ResetOnSpawn = false
+gui.Parent = player:WaitForChild("PlayerGui")
+
+frame.Size = UDim2.new(0, 250, 0, 150)
+frame.Position = UDim2.new(0.5, -125, 0.5, -75)
+frame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+frame.Active = true
+frame.Draggable = true
+frame.Parent = gui
+
+-- White Dots Effect
+for i = 1, 100 do
+    local dot = Instance.new("Frame")
+    dot.Size = UDim2.new(0, 2, 0, 2)
+    dot.Position = UDim2.new(math.random(), 0, math.random(), 0)
+    dot.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    dot.BorderSizePixel = 0
+    dot.Parent = frame
+end
+
+-- Title Bar
+titleBar.Size = UDim2.new(1, 0, 0, 25)
+titleBar.BackgroundColor3 = Color3.fromRGB(0, 0, 139)
+titleBar.Text = "created by RealNVTez"
+titleBar.TextColor3 = Color3.fromRGB(255, 255, 255)
+titleBar.Parent = frame
+
+-- Hide Button
+hideButton.Size = UDim2.new(0, 25, 0, 25)
+hideButton.Position = UDim2.new(1, -30, 0, 0)
+hideButton.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+hideButton.Text = "X"
+hideButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+hideButton.Parent = frame
